@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface User extends Document {
   username: string;
@@ -41,5 +41,6 @@ const userSchema: Schema<User> = new mongoose.Schema({
   verifyTokenExpiry: Date,
 });
 
-const User = mongoose.models.users || mongoose.model("User", userSchema);
+const User: Model<User> =
+  mongoose.models.User || mongoose.model<User>("User", userSchema);
 export default User;

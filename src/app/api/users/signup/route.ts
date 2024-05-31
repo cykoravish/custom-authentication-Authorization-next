@@ -27,13 +27,11 @@ export async function POST(request: NextRequest): Promise<any> {
       email,
       password: hashedPassword,
     });
-    const savedUser = await newUser.save();
-    // console.log("saved user: ", savedUser);
+    await newUser.save();
     return NextResponse.json(
       {
         success: true,
         message: "user registered successfully",
-        savedUser,
       },
       { status: 200 }
     );
