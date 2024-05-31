@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message: error.message || " something went wrong in login route",
+        message: error || " something went wrong in login route",
       },
       { status: 500 }
     );

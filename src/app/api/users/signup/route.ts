@@ -20,7 +20,6 @@ export async function POST(request: NextRequest): Promise<any> {
     //hash Password
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
-    console.log("test0");
     const newUser = new User({
       username,
       email,
@@ -35,10 +34,11 @@ export async function POST(request: NextRequest): Promise<any> {
       { status: 200 }
     );
   } catch (error: any) {
+    // console.log("signup page error");
     return NextResponse.json(
       {
         success: false,
-        message: error.message || "something went wrong in signup",
+        message: error || "something went wrong in signup",
       },
       { status: 500 }
     );
