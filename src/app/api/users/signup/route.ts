@@ -7,7 +7,7 @@ export async function POST(request: NextRequest): Promise<any> {
   await connect();
   try {
     const { username, email, password } = await request.json();
-    const user = await User.findOne({ email });
+    const user = await User.findOne({$or:[{email},{username}]});
     if (user) {
       return NextResponse.json(
         {

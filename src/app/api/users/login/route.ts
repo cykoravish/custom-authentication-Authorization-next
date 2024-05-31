@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const { email, password } = await request.json();
 
     //check user
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ $or: [{ email }, { username: email }] });
     if (!user) {
       return NextResponse.json(
         {

@@ -18,7 +18,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
-      toast(response.data.message);
+      toast.success(response.data.message);
       router.push("/profile");
     } catch (error: any) {
       console.log("login failed. Error:", error.message);
@@ -45,7 +45,7 @@ export default function LoginPage() {
         type="text"
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder="email"
+        placeholder="email/username"
       />
       <label htmlFor="email">password</label>
       <input
