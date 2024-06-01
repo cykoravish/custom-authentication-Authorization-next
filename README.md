@@ -1,3 +1,25 @@
+# Authentication & Authorization
+
+I have made signup and login form and after signing up the user will get token in registered email id to verify the account. User will be able to login and view the profile page and the cookie will be stored in the browser. When the user logs-out he will redirect to login-page and can't view the profile page.
+
+## Project
+
+![Project Screenshot](./public/project.png)
+
+- It's a front page made with html and css.
+
+## Technologies Used
+
+List the technologies and tools i've used in your project.
+
+- next-js with typeScript
+- mongoDb for data-base
+- bcrypt & jsonwebtoken for password encrypting and creating token
+
+## Contributing
+
+If you would like to contribute, feel free to submit issues or pull requests. I appreciate any feedback or collaboration!
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
