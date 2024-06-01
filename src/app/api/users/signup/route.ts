@@ -2,12 +2,13 @@ import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
+import { sendEmail } from "@/helpers/mailer";
 
 export async function POST(request: NextRequest): Promise<any> {
   await connect();
   try {
     const { username, email, password } = await request.json();
-    const user = await User.findOne({$or:[{email},{username}]});
+    const user = await User.findOne({ $or: [{ email }, { username }] });
     if (user) {
       return NextResponse.json(
         {
@@ -25,7 +26,11 @@ export async function POST(request: NextRequest): Promise<any> {
       email,
       password: hashedPassword,
     });
-    await newUser.save();
+    const savedUser = await newUser.save();
+
+    //send verification email
+    await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
+
     return NextResponse.json(
       {
         success: true,

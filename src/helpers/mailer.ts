@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 interface propType {
   email: string;
   emailType: string;
-  userId: string;
+  userId: any;
 }
 
 export async function sendEmail({ email, emailType, userId }: propType) {
@@ -51,7 +51,11 @@ export async function sendEmail({ email, emailType, userId }: propType) {
         process.env.DOMAIN
       }/>verifyemail?token=${hashedToken}">here</a> to ${
         emailType === "VERIFY" ? "verify your email" : "reset your password"
-      }</p>`,
+      }
+      or copy and paste the link below in your browser. <br/> ${
+        process.env.DOMAIN
+      }/verifyemail?token=${hashedToken}
+      </p>`,
     };
 
     const mailResponse = await transport.sendMail(mailOptions);
