@@ -6,7 +6,6 @@ I have made signup and login form and after signing up the user will get token i
 
 ![Project Screenshot](./public/project.png)
 
-- It's a front page made with html and css.
 
 ## Technologies Used
 
